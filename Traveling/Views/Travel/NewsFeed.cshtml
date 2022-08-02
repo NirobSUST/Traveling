@@ -1,0 +1,44 @@
+﻿@model List<TravelViewModel>
+<h2 style="text-align: center; padding-top:50px;">News Feed</h2>
+        <div class="NewsFeed">
+
+          <div class="container">
+              <div class="row">
+
+                @foreach(TravelViewModel travel in Model){
+                <div class="col-md-4 pt-5">
+                  <div class="card" style="width: 18rem;">
+                      <div class="row">
+                          <div class="col col-md-10">
+                            <img class="card-img-top" src="@travel.ProfileImageUrl" alt="Card image cap">
+                          </div>
+                       </div>
+
+              
+                      <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                             <li class="list-group-item">ID:@travel.Id</li>
+                            <li class="list-group-item">Title:@travel.Title</li>
+                            <li class="list-group-item">Experience:@travel.Experience</li>
+                            <li class="list-group-item">Bus:@travel.Bus</li>
+                            <li class="list-group-item">ApproxCost:@travel.ApproxCost</li>
+                          </ul>
+                          <br>
+                          <a class="btn btn-primary" asp-controller="Travel" 
+                                                     asp-action="GetTravelById" 
+                                                     asp-route-id="@travel.Id">Details</a>
+                          <a class="btn btn-primary" asp-controller="Travel"
+                                                     asp-action="Delete"
+                                                     asp-route-id="@travel.Id">Delete</a>
+
+                          <a class="btn btn-primary" asp-controller="Travel" 
+                                                     asp-action="Update"
+                                                     asp-route-id="@travel.Id">Update</a>
+                      </div>
+                  </div>
+                </div>
+                }
+              </div>
+          </div>
+
+        </div>
